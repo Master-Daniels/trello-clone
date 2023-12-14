@@ -8,7 +8,6 @@ import Link from "next/link";
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { CheckIcon, Loader2Icon } from "lucide-react";
-import { defaultImages } from "@/constants/images";
 import { FormErrors } from "./form-errors";
 
 interface FormPickerProps {
@@ -33,7 +32,6 @@ const FormPicker = ({ id, errors }: FormPickerProps) => {
                 });
                 if (result && result.response) {
                     const imagesArray = result.response as Array<Record<string, any>>;
-                    
 
                     setImages(imagesArray);
                     setIsLoading(false);
@@ -48,7 +46,7 @@ const FormPicker = ({ id, errors }: FormPickerProps) => {
             }
         };
 
-        setImages(defaultImages);
+        fetchImages();
     }, []);
 
     if (isLoading) {
